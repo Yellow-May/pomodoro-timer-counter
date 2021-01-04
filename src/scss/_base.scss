@@ -1,0 +1,36 @@
+// reset
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+
+$red-orange: #f44336;
+$purple: #d50095;
+$light-blue: #29b6f6;
+$dark-blue: #031323;
+$background: #010111;
+$dark-gray: #3f3f3f;
+$light-gray: #f3f3f3;
+
+.red-orange {
+	background: $red-orange !important;
+}
+.light-blue {
+	background: $light-blue !important;
+}
+.purple {
+	background: $purple !important;
+}
+
+.sans-serif {
+	font-family: sans-serif;
+}
+.cursive {
+	font-family: cursive;
+}
+.times-new-roman {
+	font-family: "Times New Roman", Times, serif;
+}
