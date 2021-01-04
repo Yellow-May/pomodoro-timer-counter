@@ -8,6 +8,7 @@ export const Countdown: React.FC<timerDataType> = ({
 	name,
 	duration,
 	timeLeft,
+	svgDuration,
 	play,
 }) => {
 	const { state, actions } = React.useContext(AppContext);
@@ -79,7 +80,8 @@ export const Countdown: React.FC<timerDataType> = ({
 				<circle r='47.5%' cx='50%' cy='50%' />
 				<circle
 					strokeDashoffset={
-						(duration / 60) * 47 * 2 * Math.PI + 47 * 2 * Math.PI
+						(duration / svgDuration) * 47 * 2 * Math.PI +
+						47 * 2 * Math.PI
 					}
 					strokeDasharray={47 * 2 * Math.PI}
 					r='47.5%'

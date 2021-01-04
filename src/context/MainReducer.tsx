@@ -90,6 +90,7 @@ export const mainReducer = (state: initialType, action: actionType) => {
 									: item.duration.toString(),
 							seconds: "00",
 						},
+						svgDuration: item.duration * 60,
 						play: false,
 						active: item.name === "pomodoro" ? true : false,
 					};

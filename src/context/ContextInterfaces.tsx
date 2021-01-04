@@ -26,6 +26,7 @@ export interface timerDataType {
 	name: timerNames;
 	duration: number;
 	timeLeft: timeLeftType;
+	svgDuration: number;
 	play: boolean;
 	active: boolean;
 }
