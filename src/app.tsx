@@ -1,8 +1,8 @@
 import * as React from "react";
-import { Nav } from "./components/Nav";
-import { Main } from "./components/Main";
-import { Footer } from "./components/Footer";
-import { Modal } from "./components/Modal";
+import Nav from "./components/nav";
+import Main from "./components/main";
+import Footer from "./components/footer";
+import Modal from "./components/modal";
 import "./scss/main.scss";
 
 import { AppContext } from "./context/AppContext";

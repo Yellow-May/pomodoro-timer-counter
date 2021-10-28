@@ -1,7 +1,7 @@
 import * as React from "react";
-import { AppContext } from "../../context/AppContext";
+import { AppContext } from "../../../context/AppContext";
 
-export const FontSetting = () => {
+const FontSetting = () => {
 	const { state, actions } = React.useContext(AppContext);
 
 	const { fontSelect } = actions;
@@ -23,9 +23,7 @@ export const FontSetting = () => {
 						key={index}
 						className={`option ${activeStyle}`}
 						style={{
-							boxShadow: item.selected
-								? "0.125rem 0.125rem 0.25rem #000"
-								: "none",
+							boxShadow: item.selected ? "0.125rem 0.125rem 0.25rem #000" : "none",
 						}}
 						onClick={fontSelect.bind(this, item.name)}>
 						Aa
@@ -35,3 +33,5 @@ export const FontSetting = () => {
 		</div>
 	);
 };
+
+export default FontSetting;

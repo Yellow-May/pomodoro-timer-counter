@@ -1,7 +1,7 @@
 import * as React from "react";
-import { AppContext } from "../../context/AppContext";
+import { AppContext } from "../../../context/AppContext";
 
-export const ColorSetting = () => {
+const ColorSetting = () => {
   const { state, actions } = React.useContext(AppContext);
 
   const { colorSelect } = actions;
@@ -28,3 +28,5 @@ export const ColorSetting = () => {
     </div>
   );
 };
+
+export default ColorSetting

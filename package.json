@@ -1,40 +1,39 @@
 {
 	"name": "pomodoro-react-app",
-	"version": "0.1.0",
+	"version": "0.2.0",
 	"private": true,
-	"dependencies": {
-		"@testing-library/jest-dom": "^5.11.8",
-		"@testing-library/react": "^11.2.2",
-		"@testing-library/user-event": "^12.6.0",
-		"@types/jest": "^26.0.19",
-		"@types/node": "^14.14.17",
-		"@types/react": "^17.0.0",
-		"@types/react-dom": "^17.0.0",
-		"node-sass": "^4.14.1",
-		"react": "^17.0.1",
-		"react-dom": "^17.0.1",
-		"react-scripts": "4.0.1",
-		"typescript": "^4.1.3",
-		"web-vitals": "^0.2.4"
+	"description": "Full React Project - FrontendMentor Pomodoro App",
+	"main": "index.tsx",
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/Yellow-May/pomodoro-timer-counter.git"
+	},
+	"keywords": [],
+	"author": "The Yellow May",
+	"license": "ISC",
+	"bugs": {
+		"url": "https://github.com/Yellow-May/pomodoro-timer-counter/issues"
 	},
 	"scripts": {
 		"start": "react-scripts start",
-		"build": "react-scripts build",
-		"test": "react-scripts test",
-		"eject": "react-scripts eject"
+		"build": "react-scripts build"
 	},
-	"eslintConfig": {
-		"extends": [
-			"react-app",
-			"react-app/jest"
-		],
-		"plugins": [
-			"react-hooks"
-		],
-		"rules": {
-			"react-hooks/rules-of-hooks": "error",
-			"react-hooks/exhaustive-deps": "warn"
-		}
+	"dependencies": {
+		"node-sass": "4.14.1",
+		"react": "^17.0.1",
+		"react-dom": "^17.0.1",
+		"react-scripts": "4.0.1",
+		"typescript": "^4.1.3"
+	},
+	"devDependencies": {
+		"@types/node": "14.14.17",
+		"@types/react": "^17.0.0",
+		"@types/react-dom": "^17.0.0",
+		"eslint-plugin-react-hooks": "^4.2.0"
+	},
+	"enginse": {
+		"node": "14.x",
+		"npm": "7.x"
 	},
 	"browserslist": {
 		"production": [
@@ -47,8 +46,5 @@
 			"last 1 firefox version",
 			"last 1 safari version"
 		]
-	},
-	"devDependencies": {
-		"eslint-plugin-react-hooks": "^4.2.0"
 	}
 }

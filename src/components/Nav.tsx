@@ -1,7 +1,7 @@
 import * as React from "react";
 import { AppContext } from "../context/AppContext";
 
-export const Nav = () => {
+const Nav = () => {
 	const { state, actions } = React.useContext(AppContext);
 
 	const { toggleNav } = actions;
@@ -23,11 +23,7 @@ export const Nav = () => {
 			{state.nav.map((item: any, index: number) => (
 				<button
 					key={index}
-					className={
-						item.active
-							? ` nav-link active ${activeStyle}`
-							: "nav-link"
-					}
+					className={item.active ? ` nav-link active ${activeStyle}` : "nav-link"}
 					title={`nav link ${item.name}`}
 					onClick={handleClick.bind(this, item.name)}>
 					{item.name}
@@ -36,3 +32,5 @@ export const Nav = () => {
 		</nav>
 	);
 };
+
+export default Nav;

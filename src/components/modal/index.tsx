@@ -1,10 +1,10 @@
 import * as React from "react";
-import { AppContext } from "../context/AppContext";
-import { ColorSetting } from "./Settings/ColorSetting";
-import { FontSetting } from "./Settings/FontSetting";
-import { TimeSetting } from "./Settings/TimeSetting";
+import { AppContext } from "../../context/AppContext";
+import ColorSetting from "./modal-settings/color";
+import FontSetting from "./modal-settings/font";
+import TimeSetting from "./modal-settings/time";
 
-export const Modal = () => {
+const Modal = () => {
 	const { state, actions } = React.useContext(AppContext);
 
 	const { closeModal, applySettings } = actions;
@@ -22,10 +22,7 @@ export const Modal = () => {
 			<div className='setting'>
 				<div className='setting-head'>
 					<h1>Settings</h1>
-					<button
-						className='close'
-						title='close modal and return to default'
-						onClick={closeModal}>
+					<button className='close' title='close modal and return to default' onClick={closeModal}>
 						&times;
 					</button>
 				</div>
@@ -49,3 +46,5 @@ export const Modal = () => {
 		</div>
 	);
 };
+
+export default Modal;

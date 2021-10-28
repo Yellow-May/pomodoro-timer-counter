@@ -1,7 +1,7 @@
 import * as React from "react";
 import { AppContext } from "../context/AppContext";
 
-export const Footer = () => {
+const Footer = () => {
 	const { actions } = React.useContext(AppContext);
 
 	const { openModal } = actions;
@@ -14,3 +14,5 @@ export const Footer = () => {
 		</footer>
 	);
 };
+
+export default Footer;

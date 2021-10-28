@@ -1,8 +1,8 @@
 import * as React from "react";
-import { AppContext } from "../context/AppContext";
-import { Countdown } from "./Countdown/Countdown";
+import { AppContext } from "../../context/AppContext";
+import { Countdown } from "./countdown";
 
-export const Main = () => {
+const Main = () => {
 	const { state } = React.useContext(AppContext);
 
 	return (
@@ -19,3 +19,5 @@ export const Main = () => {
 		</main>
 	);
 };
+
+export default Main;
