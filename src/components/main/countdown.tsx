@@ -2,6 +2,9 @@ import * as React from "react";
 import { AppContext } from "../../context/AppContext";
 import { timerDataType } from "../../context/ContextInterfaces";
 
+import pauseSvg from "../../assets/svg/pause.svg";
+import playSvg from "../../assets/svg/play.svg";
+
 let interval: ReturnType<typeof setInterval>;
 
 export const Countdown: React.FC<timerDataType> = ({
@@ -26,10 +29,8 @@ export const Countdown: React.FC<timerDataType> = ({
 	const minutesLeft = Math.floor(duration / 60);
 	const secondsLeft = duration % 60;
 
-	const minutesLeftOutput =
-		minutesLeft < 10 ? "0" + minutesLeft : minutesLeft;
-	const secondsLeftOutput =
-		secondsLeft < 10 ? "0" + secondsLeft : secondsLeft;
+	const minutesLeftOutput = minutesLeft < 10 ? "0" + minutesLeft : minutesLeft;
+	const secondsLeftOutput = secondsLeft < 10 ? "0" + secondsLeft : secondsLeft;
 
 	React.useEffect(() => {
 		if (!play) {
@@ -80,8 +81,7 @@ export const Countdown: React.FC<timerDataType> = ({
 				<circle r='47.5%' cx='50%' cy='50%' />
 				<circle
 					strokeDashoffset={
-						(duration / svgDuration) * 47 * 2 * Math.PI +
-						47 * 2 * Math.PI
+						duration > 0 ? (duration / svgDuration) * 47 * 2 * Math.PI + 47 * 2 * Math.PI : ""
 					}
 					strokeDasharray={47 * 2 * Math.PI}
 					r='47.5%'
@@ -96,13 +96,7 @@ export const Countdown: React.FC<timerDataType> = ({
 					transform: play && duration > 0 ? "scale(1.15)" : "unset",
 				}}>
 				<span>{timeLeft.minutes + ":" + timeLeft.seconds}</span>
-				<object
-					data={
-						play && duration > 0
-							? "svgs/pause.svg"
-							: "svgs/play.svg"
-					}
-					type='image/svg+xml'>
+				<object data={play && duration > 0 ? pauseSvg : playSvg} type='image/svg+xml'>
 					your browser does not support this svg
 				</object>
 			</div>

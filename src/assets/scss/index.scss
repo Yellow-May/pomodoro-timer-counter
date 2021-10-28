@@ -1,15 +1,31 @@
-@import "base";
+@import "variables";
+
+// reset
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+
+html {
+	height: 100%;
+}
 
 body {
-	overflow: hidden;
+	height: 100%;
 
 	background: $background;
 	color: $light-gray;
 
 	font-size: 0.875rem;
 
+	@media (max-width: 640px) {
+	}
+
 	.app {
-		height: 100vh;
+		height: 100%;
 		width: 100%;
 		position: relative;
 
@@ -22,148 +38,9 @@ body {
 			font-size: 2.25em;
 		}
 
-		nav {
-			height: 4.5rem;
-			width: 36rem;
-			padding: 0.25rem;
+		@import "nav";
 
-			border-radius: 9999rem;
-			background-color: #000;
-
-			display: flex;
-			justify-content: center;
-			gap: 0.25rem;
-
-			button.nav-link {
-				width: 12rem;
-
-				border: none;
-				border-radius: inherit;
-				outline: none;
-				background: transparent;
-				color: $dark-gray;
-				font-weight: 700;
-				cursor: pointer;
-				transition: 0.35s;
-				font-size: 1.25em;
-
-				&.active {
-					color: #000;
-				}
-
-				&:hover {
-					background: rgba(255, 255, 255, 0.5);
-				}
-			}
-		}
-
-		main {
-			height: 36rem;
-			width: 36rem;
-			position: relative;
-			overflow: hidden;
-
-			border-radius: 100%;
-			background: $background;
-			transform: rotate(-40deg);
-			box-shadow: 0rem -2.5rem 2.5rem $dark-blue,
-				0rem 1rem 1rem rgba(#000, 0.5);
-
-			&::before,
-			&::after {
-				content: "";
-				position: absolute;
-				width: 50%;
-				height: 100%;
-				background: linear-gradient($background, $dark-blue);
-			}
-
-			&::before {
-				border-top-left-radius: 9999rem;
-				border-bottom-left-radius: 9999rem;
-			}
-
-			&::after {
-				right: 0;
-				border-top-right-radius: 9999rem;
-				border-bottom-right-radius: 9999rem;
-			}
-
-			.timer {
-				position: absolute;
-				z-index: 10;
-				top: 2rem;
-				left: 2rem;
-				right: 2rem;
-				bottom: 2rem;
-
-				border-radius: inherit;
-				background: inherit;
-				transform: rotate(40deg);
-
-				.countdown {
-					position: absolute;
-					width: 100%;
-					height: 100%;
-
-					display: grid;
-					place-items: center;
-					background: transparent !important;
-
-					&.red-orange svg circle:nth-child(1) {
-						stroke: $red-orange;
-					}
-					&.light-blue svg circle:nth-child(1) {
-						stroke: $light-blue;
-					}
-					&.purple svg circle:nth-child(1) {
-						stroke: $purple;
-					}
-
-					svg {
-						position: absolute;
-						top: 0;
-						left: 0;
-						pointer-events: none;
-						transform: rotate(-90deg);
-						transform-origin: center;
-
-						circle {
-							fill: transparent;
-
-							&:nth-child(1) {
-								stroke-width: 0.2rem;
-							}
-
-							&:nth-child(2) {
-								stroke-width: 0.25rem;
-								stroke: $background;
-							}
-						}
-					}
-
-					.output {
-						position: absolute;
-						cursor: pointer;
-						transition: 0.25s;
-						display: grid;
-						place-items: center;
-
-						span {
-							display: block;
-							text-align: center;
-							font-size: 6.5em;
-						}
-
-						object {
-							pointer-events: none;
-							height: 3rem;
-							width: 3rem;
-						}
-					}
-				}
-			}
-		}
+		@import "main";
 
 		footer {
 			cursor: pointer;
@@ -179,204 +56,21 @@ body {
 			}
 		}
 
-		.modal {
-			height: 100%;
-			width: 100%;
-			position: absolute;
-			background: rgba(0, 0, 0, 0.5);
+		@import "modal";
+	}
 
-			display: grid;
-			place-items: center;
+	@media (max-width: 640px) {
+		overflow: auto;
+		font-size: 0.65rem;
 
-			&.close {
-				display: none;
-			}
+		.app {
+			min-height: 100vh;
+			overflow-y: auto;
 
-			.setting {
-				width: 42.5rem;
-				height: auto;
-
-				background: #fff;
-				color: #000;
-				border-radius: 1.5rem;
-				padding: 1rem 0;
-
-				.setting-head {
-					padding: 1.25rem 2.5rem;
-					border-bottom: thin solid $light-gray;
-
-					display: flex;
-					justify-content: space-between;
-					align-items: center;
-
-					h1 {
-						font-size: 3em;
-					}
-
-					button.close {
-						font-size: 2em;
-						color: $dark-gray;
-					}
-				}
-
-				.setting-body {
-					padding: 0 2.5rem;
-
-					.time {
-						padding: 1.5rem 0;
-						border-bottom: thin solid $light-gray;
-
-						h2 {
-							padding-bottom: 1rem;
-							text-transform: uppercase;
-							font-size: 1.25em;
-							letter-spacing: 0.25rem;
-						}
-
-						.options {
-							display: grid;
-							grid: auto / repeat(3, 1fr);
-							column-gap: 0.75rem;
-
-							.option {
-								h3 {
-									font-size: 1em;
-									color: lighten($dark-gray, 30);
-									padding-bottom: 0.5rem;
-								}
-
-								.select {
-									background: $light-gray;
-									padding: 0.75rem;
-									border-radius: 0.5rem;
-
-									display: flex;
-									justify-content: space-between;
-									align-items: center;
-
-									span {
-										font-weight: 700;
-										font-size: 1.125em;
-										padding: 0 0.5rem;
-									}
-
-									.increment {
-										cursor: pointer;
-
-										svg {
-											height: 1rem;
-											width: 1rem;
-										}
-
-										.up,
-										.down {
-											padding: 0 0.5rem;
-										}
-
-										.up:hover,
-										.down:hover {
-											background: rgba(
-												255,
-												255,
-												255,
-												0.5
-											);
-										}
-									}
-								}
-							}
-						}
-					}
-
-					.font,
-					.color {
-						display: flex;
-						justify-content: space-between;
-						align-items: center;
-
-						padding: 1.5rem 0;
-
-						h2 {
-							text-transform: uppercase;
-							font-size: 1.25em;
-							letter-spacing: 0.25rem;
-						}
-
-						.options {
-							display: flex;
-							gap: 1rem;
-
-							.option {
-								width: 2.75rem;
-								height: 2.75rem;
-								border-radius: 50%;
-
-								display: grid;
-								place-items: center;
-								cursor: pointer;
-							}
-						}
-					}
-
-					.font {
-						border-bottom: thin solid $light-gray;
-
-						.options .option {
-							&:nth-child(1) {
-								background-color: #000;
-								color: #fff;
-								font-family: sans-serif !important;
-							}
-
-							&:nth-child(2) {
-								background-color: lighten($dark-gray, 65);
-								font-family: cursive !important;
-							}
-
-							&:nth-child(3) {
-								background-color: lighten($dark-gray, 50);
-								font-family: "Times New Roman", Times, serif !important;
-							}
-						}
-					}
-
-					.color .options .option {
-						&:nth-child(1) {
-							background-color: $red-orange;
-						}
-
-						&:nth-child(2) {
-							background-color: $light-blue;
-						}
-
-						&:nth-child(3) {
-							background-color: $purple;
-						}
-
-						svg {
-							width: 1.125rem;
-						}
-					}
-				}
-
-				button.apply {
-					padding: 1rem 3.5rem;
-					border-radius: 99999rem;
-					color: #fff;
-
-					position: relative;
-					left: 50%;
-					transform: translate(-50%, 75%);
-				}
-
-				button {
-					border: none;
-					outline: none;
-					background: transparent;
-				}
+			footer svg {
+				height: 2rem;
+				width: 2rem;
 			}
 		}
 	}
 }
-
-@import "mobile";
