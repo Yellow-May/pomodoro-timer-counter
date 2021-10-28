@@ -1,6 +1,6 @@
 main {
-	height: 36rem;
-	width: 36rem;
+	height: 28rem;
+	width: 28rem;
 	position: relative;
 	overflow: hidden;
 
@@ -92,21 +92,22 @@ main {
 				span {
 					display: block;
 					text-align: center;
-					font-size: 6.5em;
+					font-size: 5em;
+					margin-bottom: 1.5rem;
 				}
 
 				object {
 					pointer-events: none;
-					height: 3rem;
-					width: 3rem;
+					height: 2.5rem;
+					width: 2.5rem;
 				}
 			}
 		}
 	}
 
 	@media (max-width: 640px) {
-		height: 21rem;
-		width: 21rem;
+		height: 19.5rem;
+		width: 19.5rem;
 
 		.timer {
 			top: 1.5rem;

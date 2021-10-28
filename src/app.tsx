@@ -19,7 +19,6 @@ export default function App() {
 
 	return (
 		<div className={`app ${activeStyle}`}>
-			<header>pomodoro</header>
 			<Nav />
 			<Main />
 			<Footer />

@@ -24,52 +24,53 @@ body {
 	@media (max-width: 640px) {
 	}
 
-	.app {
+	#root {
 		height: 100%;
-		width: 100%;
-		position: relative;
-
-		overflow: hidden;
-
-		display: grid;
-		place-items: center;
-
-		header {
-			font-size: 2.25em;
-		}
-
-		@import "nav";
-
-		@import "main";
-
-		footer {
-			cursor: pointer;
-
-			svg {
-				height: 3rem;
-				width: 3rem;
-				fill: $dark-gray;
-			}
-
-			&:hover svg {
-				fill: $light-gray;
-			}
-		}
-
-		@import "modal";
-	}
-
-	@media (max-width: 640px) {
-		overflow: auto;
-		font-size: 0.65rem;
 
 		.app {
-			min-height: 100vh;
-			overflow-y: auto;
+			min-height: 100%;
+			width: 100%;
+			position: relative;
+			padding: 2.5rem 0;
 
-			footer svg {
-				height: 2rem;
-				width: 2rem;
+			overflow: hidden;
+
+			display: grid;
+			place-items: center;
+			gap: 2rem;
+
+			@import "nav";
+
+			@import "main";
+
+			footer {
+				cursor: pointer;
+
+				svg {
+					height: 3rem;
+					width: 3rem;
+					fill: $dark-gray;
+				}
+
+				&:hover svg {
+					fill: $light-gray;
+				}
+			}
+
+			@import "modal";
+		}
+
+		@media (max-width: 640px) {
+			font-size: 0.65rem;
+
+			.app {
+				padding: 2rem 0;
+				gap: 2rem;
+
+				footer svg {
+					height: 2rem;
+					width: 2rem;
+				}
 			}
 		}
 	}
