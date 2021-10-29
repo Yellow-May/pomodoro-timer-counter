@@ -1,0 +1,44 @@
+nav {
+	height: 3.5rem;
+	width: 90%;
+	max-width: 36rem;
+	padding: 0.25rem;
+
+	border-radius: 9999rem;
+	background-color: #000;
+
+	display: flex;
+	justify-content: center;
+	gap: 0.25rem;
+
+	button.nav-link {
+		width: 12rem;
+
+		border: none;
+		border-radius: inherit;
+		outline: none;
+		background: transparent;
+		color: $dark-gray;
+		font-weight: 700;
+		cursor: pointer;
+		transition: 0.35s;
+		font-size: 1.25em;
+
+		&.active {
+			color: #fff;
+		}
+
+		&:hover {
+			background: rgba(255, 255, 255, 0.1);
+		}
+	}
+
+	@media (max-width: 640px) {
+		padding: 0.25rem;
+		gap: 0.25rem;
+
+		button.nav-link {
+			width: 7rem;
+		}
+	}
+}

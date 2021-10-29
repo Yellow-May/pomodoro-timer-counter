@@ -1,8 +1,18 @@
 {
-	"short_name": "React App",
-	"name": "Create React App Sample",
+	"short_name": "Pomodoro",
+	"name": "Pomodoro Timer App",
+	"icons": [
+		{
+			"src": "ymay.ico",
+			"type": "image/x-icon",
+			"sizes": "16x16 32x32 48x48 64x64"
+		},
+		{
+			"src": "ymay.png",
+			"type": "image/png",
+			"sizes": "192x192 512x512"
+		}
+	],
 	"start_url": ".",
-	"display": "standalone",
-	"theme_color": "#000000",
-	"background_color": "#ffffff"
+	"display": "standalone"
 }

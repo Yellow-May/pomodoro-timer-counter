@@ -1,0 +1,77 @@
+@import "variables";
+
+// reset
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+
+html {
+	height: 100%;
+}
+
+body {
+	height: 100%;
+
+	background: $background;
+	color: $light-gray;
+
+	font-size: 0.875rem;
+
+	@media (max-width: 640px) {
+	}
+
+	#root {
+		height: 100%;
+
+		.app {
+			min-height: 100%;
+			width: 100%;
+			position: relative;
+			padding: 2.5rem 0;
+
+			overflow: hidden;
+
+			display: grid;
+			place-items: center;
+			gap: 2rem;
+
+			@import "nav";
+
+			@import "main";
+
+			footer {
+				cursor: pointer;
+
+				svg {
+					height: 3rem;
+					width: 3rem;
+					fill: $dark-gray;
+				}
+
+				&:hover svg {
+					fill: $light-gray;
+				}
+			}
+
+			@import "modal";
+		}
+
+		@media (max-width: 640px) {
+			font-size: 0.65rem;
+
+			.app {
+				padding: 2rem 0;
+				gap: 2rem;
+
+				footer svg {
+					height: 2rem;
+					width: 2rem;
+				}
+			}
+		}
+	}
+}

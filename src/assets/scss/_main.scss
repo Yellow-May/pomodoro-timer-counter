@@ -1,0 +1,124 @@
+main {
+	height: 28rem;
+	width: 28rem;
+	position: relative;
+	overflow: hidden;
+
+	border-radius: 100%;
+	background: $background;
+	transform: rotate(-40deg);
+	box-shadow: 0rem -2.5rem 2.5rem $dark-blue, 0rem 1rem 1rem rgba(#000, 0.5);
+
+	&::before,
+	&::after {
+		content: "";
+		position: absolute;
+		width: 50%;
+		height: 100%;
+		background: linear-gradient($background, $dark-blue);
+	}
+
+	&::before {
+		border-top-left-radius: 9999rem;
+		border-bottom-left-radius: 9999rem;
+	}
+
+	&::after {
+		right: 0;
+		border-top-right-radius: 9999rem;
+		border-bottom-right-radius: 9999rem;
+	}
+
+	.timer {
+		position: absolute;
+		z-index: 10;
+		top: 2rem;
+		left: 2rem;
+		right: 2rem;
+		bottom: 2rem;
+
+		border-radius: inherit;
+		background: inherit;
+		transform: rotate(40deg);
+
+		.countdown {
+			position: absolute;
+			width: 100%;
+			height: 100%;
+
+			display: grid;
+			place-items: center;
+			background: transparent !important;
+
+			&.red-orange svg circle:nth-child(1) {
+				stroke: $red-orange;
+			}
+			&.light-blue svg circle:nth-child(1) {
+				stroke: $light-blue;
+			}
+			&.purple svg circle:nth-child(1) {
+				stroke: $purple;
+			}
+
+			svg {
+				position: absolute;
+				top: 0;
+				left: 0;
+				pointer-events: none;
+				transform: rotate(-90deg);
+				transform-origin: center;
+
+				circle {
+					fill: transparent;
+
+					&:nth-child(1) {
+						stroke-width: 0.2rem;
+					}
+
+					&:nth-child(2) {
+						stroke-width: 0.25rem;
+						stroke: $background;
+					}
+				}
+			}
+
+			.output {
+				position: absolute;
+				cursor: pointer;
+				transition: 0.25s;
+				display: grid;
+				place-items: center;
+
+				span {
+					display: block;
+					text-align: center;
+					font-size: 5em;
+					margin-bottom: 1.5rem;
+				}
+
+				object {
+					pointer-events: none;
+					height: 2.5rem;
+					width: 2.5rem;
+				}
+			}
+		}
+	}
+
+	@media (max-width: 640px) {
+		height: 19.5rem;
+		width: 19.5rem;
+
+		.timer {
+			top: 1.5rem;
+			left: 1.5rem;
+			right: 1.5rem;
+			bottom: 1.5rem;
+
+			.countdown .output object {
+				height: 2rem;
+				width: 2rem;
+			}
+		}
+	}
+}

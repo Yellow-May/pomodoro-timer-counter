@@ -1,18 +1,16 @@
-import * as React from "react";
-import { Nav } from "./components/Nav";
-import { Main } from "./components/Main";
-import { Footer } from "./components/Footer";
-import { Modal } from "./components/Modal";
-import "./scss/main.scss";
+import Nav from "./components/nav";
+import Main from "./components/main";
+import Footer from "./components/footer";
+import Modal from "./components/modal";
 
-import { AppContext } from "./context/AppContext";
+import { useStore } from "./context/store";
 
-export const App = () => {
-	const { state } = React.useContext(AppContext);
+export default function App() {
+	const { font_settingData } = useStore();
 
 	let activeStyle: string = "";
 
-	state.font_settingData.forEach(item => {
+	font_settingData.forEach(item => {
 		if (item.selected) {
 			activeStyle = item.name;
 		}
@@ -20,11 +18,10 @@ export const App = () => {
 
 	return (
 		<div className={`app ${activeStyle}`}>
-			<header>pomodoro</header>
 			<Nav />
 			<Main />
 			<Footer />
 			<Modal />
 		</div>
 	);
-};
+}
