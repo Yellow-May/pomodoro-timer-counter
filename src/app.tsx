@@ -1,17 +1,16 @@
-import * as React from "react";
 import Nav from "./components/nav";
 import Main from "./components/main";
 import Footer from "./components/footer";
 import Modal from "./components/modal";
 
-import { AppContext } from "./context/AppContext";
+import { useStore } from "./context/store";
 
 export default function App() {
-	const { state } = React.useContext(AppContext);
+	const { font_settingData } = useStore();
 
 	let activeStyle: string = "";
 
-	state.font_settingData.forEach(item => {
+	font_settingData.forEach(item => {
 		if (item.selected) {
 			activeStyle = item.name;
 		}

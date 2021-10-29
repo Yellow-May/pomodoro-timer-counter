@@ -1,26 +1,20 @@
 import * as React from "react";
-import { AppContext } from "../../context/AppContext";
-import { timerDataType } from "../../context/ContextInterfaces";
+import { useStore, useStoreDispatch } from "../../context/store";
+import { playNdPause, updateTimer } from "../../context/actions";
+import { TimerDataType } from "../../context/app-store-types-interfaces";
 
 import pauseSvg from "../../assets/svg/pause.svg";
 import playSvg from "../../assets/svg/play.svg";
 
 let interval: ReturnType<typeof setInterval>;
 
-export const Countdown: React.FC<timerDataType> = ({
-	name,
-	duration,
-	timeLeft,
-	svgDuration,
-	play,
-}) => {
-	const { state, actions } = React.useContext(AppContext);
-
-	const { playNdPause, updateTimer } = actions;
+const Countdown: React.FC<TimerDataType> = ({ name, duration, timeLeft, svgDuration, play }) => {
+	const { color_settingData } = useStore();
+	const dispatch = useStoreDispatch();
 
 	let activeStyle: string = "";
 
-	state.color_settingData.forEach(item => {
+	color_settingData.forEach(item => {
 		if (item.selected) {
 			activeStyle = item.name;
 		}
@@ -42,16 +36,18 @@ export const Countdown: React.FC<timerDataType> = ({
 		if (play) {
 			interval = setInterval(() => {
 				if (duration > 0) {
-					updateTimer({
-						name,
-						newData: {
-							minutes: minutesLeftOutput,
-							seconds: secondsLeftOutput,
-							duration: duration - 1,
-						},
-					});
+					dispatch(
+						updateTimer({
+							name,
+							newData: {
+								minutes: String(minutesLeftOutput),
+								seconds: String(secondsLeftOutput),
+								duration: duration - 1,
+							},
+						})
+					);
 				} else {
-					playNdPause({ name, newData: false });
+					dispatch(playNdPause({ name, newData: false }));
 				}
 			}, 1000);
 		}
@@ -59,24 +55,20 @@ export const Countdown: React.FC<timerDataType> = ({
 		return () => {
 			clearInterval(interval);
 		};
-	}, [
-		play,
-		duration,
-		updateTimer,
-		minutesLeftOutput,
-		secondsLeftOutput,
-		name,
-		playNdPause,
-		timeLeft,
-	]);
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, [duration, minutesLeftOutput, name, play, secondsLeftOutput]);
 
 	return (
 		<div
 			className={`countdown ${activeStyle}`}
-			onClick={playNdPause.bind(this, {
-				name: name,
-				newData: !play,
-			})}>
+			onClick={() =>
+				dispatch(
+					playNdPause({
+						name,
+						newData: !play,
+					})
+				)
+			}>
 			<svg viewBox='0 0 100 100'>
 				<circle r='47.5%' cx='50%' cy='50%' />
 				<circle
@@ -103,3 +95,5 @@ export const Countdown: React.FC<timerDataType> = ({
 		</div>
 	);
 };
+
+export default Countdown;

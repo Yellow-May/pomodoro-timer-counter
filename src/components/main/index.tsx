@@ -1,14 +1,13 @@
-import * as React from "react";
-import { AppContext } from "../../context/AppContext";
-import { Countdown } from "./countdown";
+import { useStore } from "../../context/store";
+import Countdown from "./countdown";
 
 const Main = () => {
-	const { state } = React.useContext(AppContext);
+	const { timerData } = useStore();
 
 	return (
 		<main className='pomodoro'>
 			<div className='timer'>
-				{state.timerData.map((item, index) => {
+				{timerData.map((item, index) => {
 					let e: JSX.Element = <div key={index}></div>;
 					if (item.active) {
 						e = <Countdown key={index} {...item} />;

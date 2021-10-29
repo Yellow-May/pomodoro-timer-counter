@@ -1,10 +1,9 @@
-import * as React from "react";
-import { AppContext } from "../../../context/AppContext";
+import { useStore, useStoreDispatch } from "../../../context/store";
+import { incDur } from "../../../context/actions";
 
 const TimeSetting = () => {
-	const { state, actions } = React.useContext(AppContext);
-
-	const { incDur } = actions;
+	const { time_setting } = useStore();
+	const dispatch = useStoreDispatch();
 
 	const handleInc = (name: string, dur: number, type: "increase" | "decrease"): void => {
 		let newData: number = dur;
@@ -13,14 +12,14 @@ const TimeSetting = () => {
 		} else if (type === "decrease" && dur > 0) {
 			newData = dur - 1;
 		}
-		incDur({ name, newData });
+		dispatch(incDur({ name, newData }));
 	};
 
 	return (
 		<div className='time'>
 			<h2>Time (Minutes)</h2>
 			<div className='options'>
-				{state.time_setting.map((item, index) => (
+				{time_setting.map((item, index) => (
 					<div key={index} className='option'>
 						<h3>{item.name}</h3>
 						<div className='select'>

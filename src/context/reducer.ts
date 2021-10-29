@@ -1,24 +1,16 @@
-import { initialType, actionType } from "./ContextInterfaces";
+import { InitialType, ActionType } from "./app-store-types-interfaces";
 
-export const mainReducer = (state: initialType, action: actionType) => {
+const mainReducer = (state: InitialType, action: ActionType) => {
 	switch (action.type) {
 		case "TOGGLE_NAV":
 			return {
 				...state,
 				nav: state.nav.map(item => {
-					if (item.name === action.payload) {
-						item.active = true;
-					} else {
-						item.active = false;
-					}
+					item.active = item.name === action.payload ? true : false;
 					return item;
 				}),
 				timerData: state.timerData.map(item => {
-					if (item.name === action.payload) {
-						item.active = true;
-					} else {
-						item.active = false;
-					}
+					item.active = item.name === action.payload ? true : false;
 					return item;
 				}),
 			};
@@ -27,6 +19,7 @@ export const mainReducer = (state: initialType, action: actionType) => {
 			return {
 				...state,
 				modal: true,
+				timerData: state.timerData.map(item => ({ ...item, play: false })),
 			};
 
 		case "CLOSE_MODAL":
@@ -39,9 +32,7 @@ export const mainReducer = (state: initialType, action: actionType) => {
 			return {
 				...state,
 				time_setting: state.time_setting.map(item => {
-					if (item.name === action.payload.name) {
-						item.duration = action.payload.newData;
-					}
+					if (item.name === action.payload.name) item.duration = action.payload.newData;
 					return item;
 				}),
 			};
@@ -50,11 +41,7 @@ export const mainReducer = (state: initialType, action: actionType) => {
 			return {
 				...state,
 				font_setting: state.font_setting.map(item => {
-					if (item.name === action.payload) {
-						item.selected = true;
-					} else {
-						item.selected = false;
-					}
+					item.selected = item.name === action.payload ? true : false;
 					return item;
 				}),
 			};
@@ -63,11 +50,7 @@ export const mainReducer = (state: initialType, action: actionType) => {
 			return {
 				...state,
 				color_setting: state.color_setting.map(item => {
-					if (item.name === action.payload) {
-						item.selected = true;
-					} else {
-						item.selected = false;
-					}
+					item.selected = item.name === action.payload ? true : false;
 					return item;
 				}),
 			};
@@ -84,10 +67,7 @@ export const mainReducer = (state: initialType, action: actionType) => {
 						name: item.name,
 						duration: item.duration * 60,
 						timeLeft: {
-							minutes:
-								item.duration < 10
-									? "0" + item.duration
-									: item.duration.toString(),
+							minutes: item.duration < 10 ? "0" + item.duration : item.duration.toString(),
 							seconds: "00",
 						},
 						svgDuration: item.duration * 60,
@@ -103,9 +83,7 @@ export const mainReducer = (state: initialType, action: actionType) => {
 			return {
 				...state,
 				timerData: state.timerData.map(item => {
-					if (item.name === action.payload.name) {
-						item.play = action.payload.newData;
-					}
+					if (item.name === action.payload.name) item.play = action.payload.newData;
 					return item;
 				}),
 			};
@@ -129,3 +107,5 @@ export const mainReducer = (state: initialType, action: actionType) => {
 			return state;
 	}
 };
+
+export default mainReducer;
